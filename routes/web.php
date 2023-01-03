@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Spatie\FlareClient\View;
 
 /*
@@ -17,3 +18,24 @@ use Spatie\FlareClient\View;
 Route::get('/', function () {
     return View("welcome");
 });
+
+Route::get('/home', function () {
+    return View("home");
+});
+
+Route::get('/product', function () {
+    return View("product");
+});
+
+Route::get('/unicode', function () {
+    return View("form");
+});
+
+Route::post('/unicode', function () {
+    return "Phuong thuc Post";
+});
+
+Route::match(["get","post"],'/unicode', function () {
+    return "Phuong thuc Post";
+});
+
