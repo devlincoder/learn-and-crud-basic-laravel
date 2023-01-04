@@ -24,6 +24,22 @@
 - Khai báo request : `Route::any(path,function(Request $request){return $request->method()})`
 - `::redirect(path , redirectTo , status)` => nhận request sau đó chuyển hướng tới redirectTo , status => 404 ,200 ,...
 - `::view(path , view)` => nhan request rồi render ra views
+- Group => parent/children : `Route::prefix("parent")->group(function(){Route::get("children",callback)})`
+- `::get("/path/{id}",function($id){return $id})`
+- `::get("/path/{slug}-{id}.html",function($slug,$id){return $id.$slug})`
+- Xử lí tham số `get...($id,$slug)...->where(['id'=>'pattern(regular expression)'])`
+- Đặt tên  `->name("admin.rename")` =>views : `<a href="<?php echo route('admin.rename') ?>">Link</a>`
+
+- Route to controller : `Route::get(routes,"namespace controller\classControllerName\actions")` 
+- Route to controller : `Route::get(routes,[ControllerName::class,'action'])` =>`use App\Http\Controllers\ControllerName`
+
 # Token form
 - Function `csrf_token()`
 - `<input type="hidden" name="_token" value="<?php echo csrf_token();?>"/>`
+
+# Show all function
+- `dd()`
+
+# Cách bảo trì
+- `php artisan down`
+- Create file in views : errors/503.php => Đang bảo trì
