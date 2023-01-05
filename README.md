@@ -33,13 +33,28 @@
 - Route to controller : `Route::get(routes,"namespace controller\classControllerName\actions")` 
 - Route to controller : `Route::get(routes,[ControllerName::class,'action'])` =>`use App\Http\Controllers\ControllerName`
 
+# Controller
+- Create new controller : `php artisan make:controller NameController`
+- `class ControllerName extends Controller{}`
+- `public function actionName(){........}`
+- Tương tác với routes : `Route::get(routes,[ControllerName::class,'action'])` =>`use App\Http\Controllers\ControllerName`
+- Tương tác với views : `public function actionName(){return view("folder/file....")}`
+- Create new controller resource : `php artisan make:controller NameController --resource` => `Route::resource(path,ControllerName::class)` => Tự tạo các action
+- GET => /path => index
+- GET => /path/create =>create
+- POST => /path => store
+- GET => /path/{path} => show
+- GET => /path/{path}/edit => edit
+- PUT/PATCH => /path/{path} => update
+- DELETE => /path/{path} => destroy
+
+# Middleware
+- Xử lí trung gian để trước khi tới controller (VD : login ->chuyển hướng ,...)
+- Create Middleware : `php artisan make:middleware MiddleWareName`
+- File Http/Kernel.php => Add => `protected $middleware = [..., \namespace Middleware\MiddleWareName::class]`
+- `$middlewareGroups = ["web"=>....=> chạy khi truy cập web,"api"=>....=> chạy khi truy cập api]` => đưa namespace vào
+- Đăng kí middleware : `$routeMiddleware = ["name"=> \...\File\NameMiddleware::class]` => `Route::middleware('name')->prefix....` or `->middleware('name')`
+
 # Token form
 - Function `csrf_token()`
-- `<input type="hidden" name="_token" value="<?php echo csrf_token();?>"/>`
-
-# Show all function
-- `dd()`
-
-# Cách bảo trì
-- `php artisan down`
-- Create file in views : errors/503.php => Đang bảo trì
+- `<input type="hidden" name="_token" value="<?php echo csrf_token();?>"/>` or `<?php echo csrf_field()?>
