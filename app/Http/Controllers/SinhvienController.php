@@ -37,7 +37,7 @@ class SinhvienController extends Controller
     public function store(Request $request)
     {
         Sinhvien::create($request->all());
-        return redirect()->route('sinhvien.index')->with('thongbao', 'add new student success!');
+        return redirect()->route('sinhvien.index')->with('thongbao', 'Thêm sinh viên thành công!!!');
     }
 
     /**
@@ -72,7 +72,7 @@ class SinhvienController extends Controller
     public function update(Request $request, Sinhvien $sinhvien)
     {
         $sinhvien->update($request->all());
-        return redirect()->route('sinhvien.index')->with('thongbao', "Update successfully!");
+        return redirect()->route('sinhvien.index')->with('thongbao', "Cập nhật thông tin thành công!!!");
     }
 
     /**
@@ -84,6 +84,6 @@ class SinhvienController extends Controller
     public function destroy(Sinhvien $sinhvien)
     {
         $sinhvien->delete();
-        return redirect()->route('sinhvien.index')->with('thongbao', "Delete successfully");
+        return redirect()->route('sinhvien.index')->with('thongbao', "Xóa thông tin sinh viên thành công!!!");
     }
 }
