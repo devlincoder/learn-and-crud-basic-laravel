@@ -1,1 +1,0 @@
-<h1 style="text-align: center;">Learn laravel</h1>
